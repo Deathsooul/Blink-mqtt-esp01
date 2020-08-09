@@ -4,9 +4,9 @@
 
 // Update these with values suitable for your network.
 
-const char *ssid = "Jurrasic Park";         // wifi ssid name
-const char *password = "extraterrestre";    // wifi password
-const char *mqtt_server = "192.168.100.24"; // MQTT broker Name // we are using hivemq public broker.
+const char *ssid = "*****";         // wifi ssid name
+const char *password = "*******";   // wifi password
+const char *mqtt_server = "******"; // MQTT broker Name //
 
 WiFiClient espClient;
 PubSubClient client(espClient);
