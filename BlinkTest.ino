@@ -2,11 +2,9 @@
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
 
-// Update these with values suitable for your network.
-
 const char *ssid = "*****";         // wifi ssid name
 const char *password = "*******";   // wifi password
-const char *mqtt_server = "******"; // MQTT broker Name //
+const char *mqtt_server = "******"; // MQTT broker
 
 WiFiClient espClient;
 PubSubClient client(espClient);
@@ -18,7 +16,7 @@ void setup_wifi()
 {
 
   delay(10);
-  // We start by connecting to a WiFi network
+  // Connectando
   Serial.println();
   Serial.print("Connecting to ");
   Serial.println(ssid);
@@ -50,7 +48,7 @@ void callback(char *topic, byte *payload, unsigned int length)
   }
   Serial.println();
 
-  // Switch on the LED if an 1 was received as first character
+  // Switch on the LED if an was send on
   if ((char)payload[0] == 'o' && (char)payload[1] == 'n')
   { // Here we are comparing if ON command is coming from server.
 
@@ -64,7 +62,7 @@ void callback(char *topic, byte *payload, unsigned int length)
 
 void reconnect()
 {
-  // Loop until we're reconnected
+  // Loop too reconnected
   while (!client.connected())
   {
     Serial.print("Attempting MQTT connection...");
@@ -76,7 +74,8 @@ void reconnect()
     {
       Serial.println("connected");
       digitalWrite(BUILTIN_LED, LOW);
-      client.subscribe("tcc/choro"); //  YourEmailId/Light // in my case email id is "satyasankar.09@gmail.com/Light" --> This is my topic Name
+      // Topic to Subscribe
+      client.subscribe("tcc/choro");
     }
     else
     {
